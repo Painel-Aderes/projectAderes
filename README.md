@@ -8,6 +8,9 @@
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
 <!---Estes são apenas requisitos de exemplo. Adicionar, duplicar ou remover conforme necessário--->
 * Você instalou a versão mais recente de `<Python3 / Docker / TablePlus>`
+* TablePlus, para visualização dos dados no banco.
+* Banco dados criado em PostgreSQL.
+* Docker para funcionar os container.
 * Você tem uma máquina `<Windows / Linux / Mac>`. 
 * Download Docker  [Windowns](https://www.docker.com/products/docker-desktop/) / [Linux](https://docs.docker.com/engine/install/ubuntu/) / [MacOS](https://docs.docker.com/desktop/install/mac-install/).
 
