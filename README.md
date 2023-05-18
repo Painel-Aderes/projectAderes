@@ -30,7 +30,7 @@ docker compose up -d db
 
 Use esse comando para "build" do projeto:
 ```
-docker build 
+docker build .
 ```
 
 Use o comando para iniciar o docker compose:
