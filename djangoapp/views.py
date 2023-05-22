@@ -2,43 +2,49 @@ from django.shortcuts import render
 
 # Create your views here.
 from rest_framework.response import Response
+from rest_framework import viewsets, permissions
 from rest_framework.decorators import api_view
-from .models import User
-from .serializers import UserSerializer
+from .models import Artesoes
+from .serializers import ArtesoesSerializer
 
-@api_view(['GET'])
-def getData(request):
-    users = User.objects.all()
-    serializer = UserSerializer(users, many=True)
-    return Response(serializer.data)
+class ArtesoesViewSet(viewsets.ModelViewSet):
+  queryset = Artesoes.objects.all()
+  serializer_class = ArtesoesSerializer
+  permission_classes = [permissions.IsAuthenticated]
 
-@api_view(['GET'])
-def getUser(request, pk):
-    users = User.objects.get(id=pk)
-    serializer = UserSerializer(users, many=False)
-    return Response(serializer.data)
+# @api_view(['GET'])
+# def getData(request):
+#     users = Artesoes.objects.all()
+#     serializer = ArtesoesSerializer(users, many=True)
+#     return Response(serializer.data)
 
-@api_view(['POST'])
-def addUser(request):
-    serializer = UserSerializer(data=request.data)
+# @api_view(['GET'])
+# def getUser(request, pk):
+#     users = Artesoes.objects.get(id=pk)
+#     serializer = ArtesoesSerializer(users, many=False)
+#     return Response(serializer.data)
 
-    if serializer.is_valid():
-        serializer.save()
+# @api_view(['POST'])
+# def addUser(request):
+#     serializer = ArtesoesSerializer(data=request.data)
 
-    return Response(serializer.data)
+#     if serializer.is_valid():
+#         serializer.save()
 
-@api_view(['PUT'])
-def updateUser(request, pk):
-    user = User.objects.get(id=pk)
-    serializer = UserSerializer(instance=user, data=request.data)
+#     return Response(serializer.data)
 
-    if serializer.is_valid():
-        serializer.save()
+# @api_view(['PUT'])
+# def updateUser(request, pk):
+#     user = Artesoes.objects.get(id=pk)
+#     serializer = ArtesoesSerializer(instance=user, data=request.data)
 
-    return Response(serializer.data)
+#     if serializer.is_valid():
+#         serializer.save()
 
-@api_view(['DELETE'])
-def deleteUser(request, pk):
-    user = User.objects.get(id=pk)
-    user.delete()
-    return Response('User successfully deleted!')
+#     return Response(serializer.data)
+
+# @api_view(['DELETE'])
+# def deleteUser(request, pk):
+#     user = Artesoes.objects.get(id=pk)
+#     user.delete()
+#     return Response('User successfully deleted!')

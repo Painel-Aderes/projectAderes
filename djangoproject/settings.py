@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path, os
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -38,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'djangoproject',
     'djangoapp'
 ]
 
@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'djangoproject.wsgi.application'
 #         'ENGINE': os.environ.get('DB_DRIVER','django.db.backends.postgresql'),
 #         'USER': os.environ.get('PG_USER','postgres'),
 #         'PASSWORD':os.environ.get('PG_PASSWORD','postgres'),
-#         'NAME': os.environ.get('PG_DB','postgres'),
+#         'NAME': os.environ.get('PG_DB','db_painel_empreendedor'),
 #         'PORT': os.environ.get('PG_PORT','5432'),
 #         'HOST': os.environ.get('PG_HOST','localhost'), # uses the container if set, otherwise it runs locally
 #     }

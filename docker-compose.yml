@@ -9,7 +9,7 @@ services:
     environment:
       - PG_USER=postgres
       - PG_PASSWORD=postgres
-      - PG_DB=postgres
+      - PG_DB=db_painel_empreendedor
       - PG_PORT=5432
       - PG_HOST=db
     depends_on:
@@ -19,7 +19,7 @@ services:
     container_name: db
     image: postgres:15
     environment:
-      - POSTGRES_DB=postgres
+      - POSTGRES_DB=db_painel_empreendedor
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     ports:

@@ -9,24 +9,22 @@ from django.db import models
 
 
 class Artesoes(models.Model):
-    idartesoes = models.AutoField(primary_key=True)  # The composite primary key (idartesoes, sicab, junta_comercial_idjunta_comercial, junta_comercial_cnpj) found, that is not supported. The first column is selected.
-    nome_social = models.CharField(unique=True, max_length=45)
-    sicab = models.CharField(unique=True, max_length=1)
+    idartesoes = models.AutoField(primary_key=True)  # The composite primary key (idartesoes, sicab) found, that is not supported. The first column is selected.
+    nome_social = models.CharField(max_length=100)
+    sicab = models.IntegerField(unique=True)
     status_carteira = models.CharField(max_length=7)
     status_cadastro = models.CharField(max_length=7)
-    data_cadastro = models.DateField()
-    data_validade = models.DateField()
+    data_cadastro = models.DateTimeField()
+    data_validade = models.DateTimeField()
     tipo = models.CharField(max_length=15)
-    uf = models.CharField(max_length=45)
-    municipio = models.CharField(max_length=45)
-    codigo_municipio = models.IntegerField()
-    junta_comercial_idjunta_comercial = models.ForeignKey('JuntaComercial', models.DO_NOTHING, db_column='junta_comercial_idjunta_comercial')
-    junta_comercial_cnpj = models.ForeignKey('JuntaComercial', models.DO_NOTHING, db_column='junta_comercial_cnpj', to_field='cnpj', related_name='artesoes_junta_comercial_cnpj_set')
+    uf = models.CharField(max_length=100)
+    municipio = models.CharField(max_length=100)
+    # codigo_municipio = models.IntegerField()
 
     class Meta:
         managed = False
         db_table = 'artesoes'
-        unique_together = (('idartesoes', 'sicab', 'junta_comercial_idjunta_comercial', 'junta_comercial_cnpj'),)
+        unique_together = (('idartesoes', 'sicab'),)
 
 
 class FichaCadastroClient10(models.Model):
@@ -48,17 +46,17 @@ class FichaCadastroClient10(models.Model):
 
 class FichaCadastroCliente13(models.Model):
     idficha_cadastro_cliente_1_3 = models.AutoField(db_column='idficha_cadastro_cliente_1.3', primary_key=True)  # Field renamed to remove unsuitable characters. The composite primary key (idficha_cadastro_cliente_1.3, cpnj) found, that is not supported. The first column is selected.
-    razao_social = models.CharField(max_length=45)
+    razao_social = models.CharField(max_length=100)
     cpnj = models.IntegerField(unique=True)
-    inscricao_estadual = models.CharField(max_length=45)
-    incricao_municipal = models.CharField(max_length=45)
-    data_abertura = models.CharField(max_length=45)
-    nome_fantasia = models.CharField(max_length=45)
-    setor = models.CharField(max_length=45)
-    local = models.CharField(max_length=45)
-    ijc = models.CharField(max_length=45)
-    endereco_comercial = models.CharField(max_length=45)
-    cep = models.CharField(max_length=45)
+    inscricao_estadual = models.CharField(max_length=100)
+    incricao_municipal = models.CharField(max_length=100)
+    data_abertura = models.CharField(max_length=100)
+    nome_fantasia = models.CharField(max_length=100)
+    setor = models.CharField(max_length=100)
+    local = models.CharField(max_length=100)
+    ijc = models.CharField(max_length=100)
+    endereco_comercial = models.CharField(max_length=100)
+    cep = models.CharField(max_length=100)
     ficha_cadastro_client_1_0_idficha_cadastro_client_1_0 = models.ForeignKey(FichaCadastroClient10, models.DO_NOTHING, db_column='ficha_cadastro_client_1.0_idficha_cadastro_client_1.0')  # Field renamed to remove unsuitable characters.
     ficha_cadastro_client_1_0_cpf = models.ForeignKey(FichaCadastroClient10, models.DO_NOTHING, db_column='ficha_cadastro_client_1.0_cpf', to_field='cpf', related_name='fichacadastrocliente13_ficha_cadastro_client_1_0_cpf_set')  # Field renamed to remove unsuitable characters.
 
@@ -69,11 +67,11 @@ class FichaCadastroCliente13(models.Model):
 
 
 class JuntaComercial(models.Model):
-    idjunta_comercial = models.AutoField(primary_key=True)  # The composite primary key (idjunta_comercial, cnpj, artesoes_idartesoes, artesoes_sicab, artesoes_junta_comercial_idjunta_comercial, artesoes_junta_comercial_cnpj) found, that is not supported. The first column is selected.
+    idjunta_comercial = models.AutoField(primary_key=True)  # The composite primary key (idjunta_comercial, cnpj) found, that is not supported. The first column is selected.
     nome_empresa = models.CharField(max_length=100)
     porte = models.CharField(max_length=100)
     mei = models.CharField(max_length=5)
-    cnpj = models.IntegerField()
+    cnpj = models.IntegerField(unique=True)
     ds_logradouro = models.CharField(max_length=100)
     ds_numero = models.CharField(max_length=100)
     ds_complemento = models.CharField(max_length=100)
@@ -81,15 +79,11 @@ class JuntaComercial(models.Model):
     nr_cep = models.CharField(max_length=100)
     no_municipio = models.CharField(max_length=100)
     ds_atividade = models.CharField(max_length=100)
-    artesoes_idartesoes = models.ForeignKey(Artesoes, models.DO_NOTHING, db_column='artesoes_idartesoes')
-    artesoes_sicab = models.ForeignKey(Artesoes, models.DO_NOTHING, db_column='artesoes_sicab', to_field='sicab', related_name='juntacomercial_artesoes_sicab_set')
-    artesoes_junta_comercial_idjunta_comercial = models.ForeignKey(Artesoes, models.DO_NOTHING, db_column='artesoes_junta_comercial_idjunta_comercial', to_field='junta_comercial_idjunta_comercial', related_name='juntacomercial_artesoes_junta_comercial_idjunta_comercial_set')
-    artesoes_junta_comercial_cnpj = models.ForeignKey(Artesoes, models.DO_NOTHING, db_column='artesoes_junta_comercial_cnpj', to_field='junta_comercial_cnpj', related_name='juntacomercial_artesoes_junta_comercial_cnpj_set')
 
     class Meta:
         managed = False
         db_table = 'junta_comercial'
-        unique_together = (('idjunta_comercial', 'cnpj', 'artesoes_idartesoes', 'artesoes_sicab', 'artesoes_junta_comercial_idjunta_comercial', 'artesoes_junta_comercial_cnpj'),)
+        unique_together = (('idjunta_comercial', 'cnpj'),)
 
 
 class Microcredito(models.Model):
@@ -121,13 +115,13 @@ class Microcredito(models.Model):
 
 class Municipio(models.Model):
     idmunicipio = models.AutoField(primary_key=True)
-    concat_uf = models.CharField(max_length=45)
-    municipio = models.CharField(max_length=45)
-    ibge = models.CharField(max_length=45)
-    ibge7 = models.CharField(max_length=45)
-    uf = models.CharField(max_length=45)
-    porte = models.CharField(max_length=45)
-    capital = models.CharField(max_length=45)
+    concat_uf = models.CharField(max_length=100)
+    municipio = models.CharField(max_length=100)
+    ibge = models.CharField(max_length=100)
+    ibge7 = models.CharField(max_length=100)
+    uf = models.CharField(max_length=100)
+    porte = models.CharField(max_length=100)
+    capital = models.CharField(max_length=100)
 
     class Meta:
         managed = False
