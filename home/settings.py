@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-t=l0-fl*2ghc$0ajt%(wcw8fyg$k%rmga)%-=_xl=fx837v!h+'
+SECRET_KEY = 'django-insecure-z87j0jo%&1g886g-trxbh!iq%1ni$8u4e2rbw*vta*7-@4g4l='
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'home',
-    
+    'api'
 ]
 
 MIDDLEWARE = [
@@ -81,8 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'db_painel_empreendedor',
         'USER': 'root',
-        # 'PASSWORD': '14072002',
-        'PASSWORD': 'password',
+        'PASSWORD': '14072002',
         'HOST': '127.0.0.1',
         'PORT': '3306'
     }
