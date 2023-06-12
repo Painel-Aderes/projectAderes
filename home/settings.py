@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': 'db_painel_empreendedor',
         'USER': 'root',
         'PASSWORD': '14072002',
-        'HOST': '127.0.0.1',
+        'HOST': '172.104.210.128',
         'PORT': '3306'
     }
 }
