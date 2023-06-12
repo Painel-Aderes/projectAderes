@@ -19,7 +19,9 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('api/v1/', include('api.urls', namespace='api')),
+    path('api/v1/artesao/', include('api.urls', namespace='artesoes')),
+    path('api/v2/juntacomercial',include('api.urls', namespace='junta_comercial')),
+    path('api/v3/microcredito',include('api.urls', namespace='micro_credito')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('admin/', admin.site.urls),
     path('users/', include('api.urls')),

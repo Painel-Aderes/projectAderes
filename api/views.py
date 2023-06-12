@@ -1,8 +1,8 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import viewsets, permissions
-from .models import Artesoes
-from .serializers import ArtesoesSerializer
+from .models import *
+from .serializers import ArtesoesSerializer, JuntaComercialSerializer, MicrocreditoSerializer
 
 
 class ArtesoesViewSet(viewsets.ModelViewSet):
@@ -11,6 +11,16 @@ class ArtesoesViewSet(viewsets.ModelViewSet):
   permission_classes = [permissions.IsAuthenticated]
 
 
+class JuntaComercialViewSet(viewsets.ModelViewSet):
+  queryset = JuntaComercial.objects.all()
+  serializer_class = JuntaComercialSerializer
+  permission_classes = [permissions.IsAuthenticated]
+  
+  
+class MicrocreditoViewSet(viewsets.ModelViewSet):
+  queryset = Microcredito.objects.all()
+  serializer_class = MicrocreditoSerializer
+  permission_classes = [permissions.IsAuthenticated]
 
 # @api_view(['GET'])
 # def getData(request):

@@ -7,12 +7,12 @@ class ArtesoesSerializer(serializers.ModelSerializer):
         model = Artesoes
         fields = '__all__'
           
-class JuntaComercial(serializers.ModelSerializer):
+class JuntaComercialSerializer(serializers.ModelSerializer):
     class Meta:
         model = JuntaComercial
         fields = '__all__'
 
-class Microcredito(serializers.ModelSerializer):
+class MicrocreditoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Microcredito
         fields = '__all__'
