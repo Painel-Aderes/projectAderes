@@ -1,6 +1,6 @@
 from django.urls import path
 from rest_framework.routers import DefaultRouter
-from api.views import ArtesoesViewSet 
+from api.views import ArtesoesViewSet, JunataComercialViewSet, MicroCreditoViewSet
 from .views import viewsets
 
 
@@ -11,12 +11,18 @@ router.register(r'fundos', ArtesoesViewSet)
 
 urlpatterns = router.urls
 
-# urlpatterns = [
-    
-#     path('', views.getjunta),
-#     path ('create', views.createjunta),
-#     path ('read/<str:pk>', views.getjuntaid),
-#     path ('update/<str:pk>', views.updatejunta),
-#     path ('delete/<str:pk>', views.deletejunta),
+app_name = 'api'
 
-# ]
+router = DefaultRouter(trailing_slash=False)
+router.register(r'fundos', JunataComercialViewSet)
+
+urlpatterns = router.urls
+
+
+app_name = 'api'
+
+router = DefaultRouter(trailing_slash=False)
+router.register(r'fundos', MicroCreditoViewSet)
+
+urlpatterns = router.urls
+
