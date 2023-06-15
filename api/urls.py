@@ -1,36 +1,22 @@
 from django.urls import path
 from rest_framework.routers import DefaultRouter
-from . import views
-from api.views import ArtesoesViewSet
-from api.views import JuntaComercialViewSet
-from api.views import MicrocreditoViewSet
+from api.views import ArtesoesViewSet 
+from .views import viewsets
 
 
-app_name = 'artesoes'
+app_name = 'api'
 
 router = DefaultRouter(trailing_slash=False)
-router.register(r'artesoes', ArtesoesViewSet)
+router.register(r'fundos', ArtesoesViewSet)
 
 urlpatterns = router.urls
-
-
-app_name = 'junta_comercial'
-
-router = DefaultRouter(trailing_slash=False)
-router.register(r'junta_comercial', JuntaComercialViewSet)
-urlpatterns = router.urls
-
-app_name = 'micro_credito'
-
-router = DefaultRouter(trailing_slash=False)
-router.register(r'micro_credito', MicrocreditoViewSet)
-urlpatterns = router.urls
-
 
 # urlpatterns = [
-#     path('', views.getData),
-#     path ('create', views.addUser),
-#     path ('read/<str:pk>', views.getUser),
-#     path ('update/<str:pk>', views.updateUser),
-#     path ('delete/<str:pk>', views.deleteUser),
+    
+#     path('', views.getjunta),
+#     path ('create', views.createjunta),
+#     path ('read/<str:pk>', views.getjuntaid),
+#     path ('update/<str:pk>', views.updatejunta),
+#     path ('delete/<str:pk>', views.deletejunta),
+
 # ]
