@@ -20,10 +20,12 @@ from django.urls import path, include
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
-    path('users/', include('api.urls')),
-    path('api/v1/', include('api.urls', namespace='api')),
-    path('api/v2/', include('api.urls', namespace='api')),
-    path('api/v3/', include('api.urls', namespace='api')),
+    # path('users/', include('api.urls')),
+    # path('api/v1/', include('api.urls', namespace='api')),
+    # path('api/v2/', include('api.urls', namespace='api')),
+    # path('api/v3/', include('api.urls', namespace='api')),
     # path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    
+    path('users/', include('api.urls')),
 ]
 
