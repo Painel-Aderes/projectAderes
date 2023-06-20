@@ -32,7 +32,10 @@ from . import views
 urlpatterns = [
     path('', views.getData),
     path ('create', views.addUser),
-    path ('read/<str:pk>', views.getUser),
-    path ('update/<str:pk>', views.updateUser),
-    path ('delete/<str:pk>', views.deleteUser),
+    # path ('read/<str:pk>', views.getUser),
+    # path ('update/<str:pk>', views.updateUser),
+    # path ('delete/<str:pk>', views.deleteUser),
+    path ('readUpdate/<str:pk>', views.GetPutDell),
+    path ('readUpdate/', views.GetPutDell2)
+
 ]
