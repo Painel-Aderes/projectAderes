@@ -26,6 +26,8 @@ urlpatterns = [
     # path('api/v3/', include('api.urls', namespace='api')),
     # path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     
-    path('users/', include('api.urls')),
+    path('artesoes/', include('api.urls')),
+    path('junta/', include('api.urls')),
+
 ]
 

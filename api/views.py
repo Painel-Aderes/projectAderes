@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from .models import Artesoes
-from .serializers import ArtesoesSerializer
+from .models import Artesoes, JuntaComercial
+from .serializers import ArtesoesSerializer, JuntaComercialSerializer
 
 
 from rest_framework.views import APIView
@@ -12,14 +12,13 @@ from django.contrib.auth.models import User
 
 
 @api_view(['GET'])
-def getData(request):
+def getArtesoes(request):
     users = Artesoes.objects.all()
     serializer = ArtesoesSerializer(users, many=True)
     return Response(serializer.data)
 
-#Funciona 
 @api_view(['GET', 'POST'])
-def addUser(request):
+def GetPostArtesoes(request):
     """
     List all persons, or create a new person.
     """
@@ -36,53 +35,68 @@ def addUser(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-
 @api_view(['GET', 'PUT', 'DELETE'])
-def GetPutDell(request, pk):
+def GetPutDellArtesoes(request, pk):
     """
     Retrieve, update or delete a person instance.
     """
     try:
-        person = Artesoes.objects.get(pk=pk)
+        artesoes = Artesoes.objects.get(pk=pk)
     except Artesoes.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        serializer = ArtesoesSerializer(person)
+        serializer = ArtesoesSerializer(artesoes)
         return Response(serializer.data)
 
     elif request.method == 'PUT':
-        serializer = ArtesoesSerializer(person, data=request.data)
+        serializer = ArtesoesSerializer(artesoes, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'DELETE':
-        person.delete()
+        artesoes.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+
+@api_view(['GET'])
+def getJuntacomercial(request):
+    juntacomercial = JuntaComercial.objects.all()
+    serializer = JuntaComercialSerializer(juntacomercial, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET', 'POST'])
+def getPostJuntacomercial(request):
+    if request.method == 'GET':
+        juntacomerical = JuntaComercial.objects.all()
+        serializer = JuntaComercialSerializer(juntacomerical, many=True)
+        
+    elif request.method == 'POST':
+        serializer = JuntaComercialSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors,  status=status.HTTP_400_BAD_REQUEST)
+    
 @api_view(['GET', 'PUT', 'DELETE'])
-def GetPutDell2(request):
-    """
-    Retrieve, update or delete a person instance.
-    """
+def GetPutDeleteJuntacomercial(request, pk):
     try:
-        person = Artesoes.objects.get()
-    except Artesoes.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+        juntacomercial = JuntaComercial.objects.get(pk=pk)
+    except JuntaComercial.DoesNotExist:
+        return Response(status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        serializer = ArtesoesSerializer(person)
+        serializer = JuntaComercialSerializer(juntacomercial)
         return Response(serializer.data)
-
+    
     elif request.method == 'PUT':
-        serializer = ArtesoesSerializer(person, data=request.data)
+        serializer = JuntaComercialSerializer(juntacomercial, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
     elif request.method == 'DELETE':
-        person.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        juntacomercial.delete()
+        return Response(status.HTTP_204_NO_CONTENT)
