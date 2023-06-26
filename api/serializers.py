@@ -6,7 +6,7 @@ class ArtesoesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Artesoes
         fields = '__all__'
-          
+
 class JuntaComercialSerializer(serializers.ModelSerializer):
     class Meta:
         model = JuntaComercial
@@ -17,7 +17,7 @@ class MicrocreditoSerializer(serializers.ModelSerializer):
         model = Microcredito
         fields = '__all__'
 
-class Municipio(serializers.ModelSerializer):
+class MunicipioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Municipio
         fields = '__all__'
@@ -26,4 +26,4 @@ class Municipio(serializers.ModelSerializer):
 #     class Meta:
 #         model = seger
 #         fields = '__all__'
-        
+
