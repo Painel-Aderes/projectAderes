@@ -13,19 +13,19 @@ python manage.py runserver
 
 Estará funcionando ns seguinte porta
 ````
-https://127.0.0.1:8000/users
+https://127.0.0.1:8000/artesoes
 ````
 
 ## Portas aplicação
 
 Buscar o usuário por ID e podera usar protocolos GET, PUT, DELETE
 ````
-https://127.0.0.1:8000/users/readUpdate/id
+https://127.0.0.1:8000/artesoes/readUpdate/8
 ````
 
 Buscara todos os usuário do banco
 ````
-https://127.0.0.1:8000/users
+https://127.0.0.1:8000/artesoes
 ````
 
 
