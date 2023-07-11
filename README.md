@@ -20,7 +20,7 @@ https://127.0.0.1:8000/artesoes
 
 Buscar o usuário por ID e podera usar protocolos GET, PUT, DELETE
 ````
-https://127.0.0.1:8000/artesoes/readUpdate/8
+https://127.0.0.1:8000/artesoes/artesoesUpdate/8
 ````
 
 Buscara todos os usuário do banco
