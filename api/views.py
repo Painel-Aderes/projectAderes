@@ -69,8 +69,8 @@ def getJuntacomercial(request):
 @api_view(['GET', 'POST'])
 def getPostJuntacomercial(request):
     if request.method == 'GET':
-        juntacomerical = JuntaComercial.objects.all()
-        serializer = JuntaComercialSerializer(juntacomerical, many=True)
+        juntacomercial = JuntaComercial.objects.all()
+        serializer = JuntaComercialSerializer(juntacomercial, many=True)
 
     elif request.method == 'POST':
         serializer = JuntaComercialSerializer(data=request.data)

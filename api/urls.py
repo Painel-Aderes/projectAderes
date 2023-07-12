@@ -4,8 +4,8 @@ from . import views
 urlpatterns = [
     #Artesões
     path('artesoes/', views.getArtesoes), #Puxa todos os dados
-    path ('artesoes/update/<str:pk>', views.GetPutDellArtesoes), #Puxa, Atualiza e Deleta dados.
     path ('artesoes/create', views.GetPostArtesoes),#Puxa todos os dados e Cria
+    path ('artesoes/update/<str:pk>', views.GetPutDellArtesoes), #Puxa, Atualiza e Deleta dados.
     ##JUNTA COMERCIAL
     path ('junta/', views.getJuntacomercial),
     path ('junta/create', views.getPostJuntacomercial),
